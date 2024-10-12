@@ -1,0 +1,29 @@
+html, body {
+    height: 100vh;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+header {
+    height: auto;
+    grid-area: header;
+    padding: 24px 0px;
+}
+
+.gameboard {
+    display: grid;
+    grid-area: gameboard;
+    grid-template-columns: repeat(3, 96px);
+    grid-template-rows: repeat(3, 96px);
+}
+
+.cell {
+    border: 1px solid gray;
+}
