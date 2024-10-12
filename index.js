@@ -1,6 +1,21 @@
+function handleClick(event) {
+    if (event.target && event.target.id === "start") {
+        let game = createGame();
+        game.startGame();
+    }
+
+    if (event.target && event.target.className === "cell") {
+        console.log("todo: handle click on cell");
+    }
+}
+
 function createGameboard() {
     return {
-        tiles: [],
+        tiles: [
+            [null, null, null],
+            [null, null, null],
+            [null, null, null]
+        ]
     }
 }
 
@@ -12,20 +27,20 @@ function createPlayer(name, team) {
 }
 
 function createGame() {
-    const start = TODO;
     const players = [];
+    let roundCounter = 0;
     let round = "x";
-    
-    startGame();
+    let gameboard = null;
 
     function startGame() {
+        const dialog = document.addElement("dialog")
 
-        // TODO: ask user for input for name
+        const player1 = createPlayer("Player 1", "x");
+        const player2 = createPlayer("Player 2", "o");
 
-        const player1 = createPlayer(name1, "x");
-        const player2 = createPlayer(name2, "o");
-
-        players.push(player1, player2);
+        this.gameboard = createGameboard();
+        this.players.push(player1, player2);
+        this.startRound();
     }
 
     function startRound() {
@@ -36,20 +51,14 @@ function createGame() {
 
             round = "x";
         }
+        roundCounter++;
+    }
+
+    return {
+        startGame,
+        startRound,
     }
 }
 
-let game = createGame();
-game.start();
-
-const button = document.querySelector("#start");
-const gameboard = document.querySelector(".gameboard");
-
-const gameboardListener = gameboard.addEventListener("click", handleClick);
-
-function handleClick() {
-
-
-    
-}
-
+const bodySelector = document.querySelector("body");
+const bodyListener = bodySelector.addEventListener("click", handleClick);
